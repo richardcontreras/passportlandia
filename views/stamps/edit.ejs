@@ -1,0 +1,21 @@
+<% include ../partials/header %> 
+
+<h1 class='lead text-center'>Edit <%= stamp.name %></h1>
+
+<form class='container form-group' action="/stamps/<%= stamp._id %>?_method=PUT" method='POST'>
+    <label for='stamp[name]'>Name</label>
+    <input class='form-control mb-1' type='text' name='stamp[name]' value='<%= stamp.name %>'>
+    <label for='stamp[image]'>Image Url</label>
+    <input class='form-control mb-1' type='text' name='stamp[image]' value='<%= stamp.image %>'>
+    <label for='stamp[description]'>Description</label>
+    <textarea class='form-control mb-1 pb-5' type='text' name='stamp[description]' ><%= stamp.description %></textarea>
+    <label for='question'>Question</label>
+    <input class='form-control mb-1' type='text' name='stamp[question]' value='<%= stamp.question %>'>
+    <label for='answer'>Answer</label>
+    <input class='form-control mb-1' type='text' name='stamp[answer]' value='<%= stamp.answer %>'>
+    <div class='text-center'>
+        <button class='btn btn-outline-info'>Edit</button>
+    </div>
+</form>
+
+<% include ../partials/footer %> 

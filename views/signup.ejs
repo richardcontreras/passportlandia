@@ -1,0 +1,15 @@
+<% include partials/header %>
+
+<div class='signup form-group text-center'>
+    <form action='/signup' method='POST'>
+        <input class='form-control' type='text' name='username' placeholder='username' required>
+        <% if (userAlreadyExists) { %>
+            <p class='text-danger'>That username already exists.</p>
+        <% } %>
+        <input class='form-control' type='email' name='email' placeholder='email' required>
+        <input class='form-control' type='text' name='password' placeholder='password' required>
+        <button class='btn btn-outline-primary mt-3'>Sign up</button>
+    </form>
+</div>
+
+<% include partials/footer %>

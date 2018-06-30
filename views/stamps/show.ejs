@@ -1,0 +1,105 @@
+<% include ../partials/header %> 
+
+<div class='container'>
+    <div class='row'>
+        
+        <div class="card col-11 col-md-6 mx-auto"> <%# Top div with image and description %>
+            <h5 class="card-title text-center"><%= stamp.name %></h5>
+            <img class="card-img-top" src="<%= stamp.image %>" alt="Image of <%= stamp.name %>">
+            <p class="card-text my-2 white-space-pre-wrapped"><%= stamp.description %></p>
+        </div>
+        
+        <div class='card col-11 col-md-6 mx-auto'>
+               
+
+
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <% if (stamp.reqStamp === true) { %>
+                    <p class='font-weight-bold mb-0'>Required Stamp</p>
+                    <% } else { %>
+                    <p class='font-weight-bold mb-0'>Optional Stamp</p>
+                    <% } %>
+                    <button type="button" class="btn btn-primary">
+                      Neighborhood <span class="badge badge-light"><%= stamp.neighborhood %></span>
+                    </button>
+                    <p id='stampAddress'>(<a href="http://maps.google.com/?q=<%= stamp.address %>+Portland+Oregon"><%= stamp.address %></a>)</p>
+                </li>
+                <li class="list-group-item">Submitted by <%= stamp.author.username %></li>
+                <li class="list-group-item">
+                <% if (currentUser && (currentUser.nStamps.includes(stamp._id.toString()) || currentUser.neStamps.includes(stamp._id.toString()) || currentUser.nwStamps.includes(stamp._id.toString()) || currentUser.seStamps.includes(stamp._id.toString()) || currentUser.swStamps.includes(stamp._id.toString()))) { %>
+                <button class='btn btn-success' disabled>Stamp completed!</button>
+                <% } else if (currentUser) { %>
+                    <p class='lead'>Clue to complete stamp:</p>
+                    <p class='font-italic'><%= stamp.question %></p>
+                    <form class='form-group' action='/users/<%= currentUser._id %>/<%= stamp._id %>' method="POST">
+                    <input class='form-control col-5' type='text' name='submission' placeholder="Answer">
+                    <input type='hidden' name='neighborhood' value='<%= stamp.neighborhood %>'>
+                    <button class='btn btn-outline-secondary'>Complete Stamp</button>
+                    </form>
+                    <p>Having trouble completing this stamp? Click <a href='/help'>here</a> for help.</p>
+                    <% } %>
+                <% if (stamp.usersCompleted === 1) { %>
+                        <p class='mb-0'>This stamp has been completed by 1 user.</p>
+                    <% } else { %>
+                        <p class='mb-0'>This stamp has been completed by <%= stamp.usersCompleted %> users.</p>
+                    <% } %>  
+                </li>
+                <li class="list-group-item">
+                    <p class='lead'>Comments:</p>
+                    <% stamp.comments.forEach((comment) => { %>
+                        <strong><%= comment.author.username %></strong>
+                        <% if (comment.author.level === 0) { %>
+                            <span class='font-italic'>(Tourist)</span>
+                        <% } else if (comment.author.level === 1) { %>
+                            <span class='font-italic'>(Hipster Apprentice)</span>
+                        <% } else if (comment.author.level === 2) { %>
+                            <span class='font-italic'>(Hipster)</span>
+                        <% } else if (comment.author.level === 3) { %>
+                            <span class='font-italic'>(Junior Diplomat)</span>
+                        <% } else if (comment.author.level === 4) { %>
+                            <span class='font-italic'>(Diplomat)</span>
+                        <% } else if (comment.author.level === 5) { %>
+                            <span class='font-italic'>(Ambassador)</span>
+                        <% } %>
+
+                        <p class='white-space-pre-wrapped'><%= comment.text %></p>
+                        <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+                        <div class='btn-group'>
+                            <a id='editCommentButton' class='btn btn-outline-secondary mr-1' href='/stamps/<%= stamp._id %>/comments/<%=comment._id %>/edit'>Edit Comment</a>
+                            <form action='/stamps/<%=stamp._id %>/comments/<%=comment._id %>?_method=DELETE' method='POST'>
+                            <button class='btn btn-outline-danger'>Delete comment</button>         
+                            </form>
+                        </div>  
+                        <% } %>
+                    <% }); %>
+                    <% if (currentUser) { %>
+                        <form id='addCommentForm' class='form-group' action='/stamps/<%= stamp._id %>/comments' method="POST">
+                            <textarea class='form-control' type='text' name='comment[text]' placeholder="Type comment"></textarea>
+                            <span class='input-group-btn'>
+                                <button class='btn btn-outline-secondary'>Add Comment</button>
+                            </span>
+                        </form>
+                    <% } %>
+                    <% if (stamp.comments.length === 0) { %>
+                    <p>Be the first to comment!</p>
+                    <% } else { %>
+                    <a href="mailto:passportlandia@gmail.com?Subject=Report%20Comment%20at%20Stamp%20Number%20<%=stamp._id%>" class='btn btn-outline-danger'>Report a comment</a>
+                    <% } %>
+                </li>
+
+                <% if (currentUser && stamp.author.id.equals(currentUser._id)) { %>
+                  <li class="list-group-item">
+                        <a class='btn btn-outline-info' href='/stamps/<%= stamp._id %>/edit'>Edit Stamp</a>
+                  </li>
+                <% } %>
+              </ul>    
+                
+        </div> <%# End of second div with most stamp information%>
+    </div> <%# End of row div%>
+</div> <%# End of container div%>
+
+
+
+
+<% include ../partials/footer %> 

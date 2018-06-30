@@ -1,0 +1,32 @@
+<% include ../partials/header %> 
+
+<h1 class='lead text-center'>Add a new stamp</h1>
+
+<form class='form-group container' action='/stamps' method='POST'>
+    <input class='form-control mb-1'type='text' name='name' placeholder='Name of Stamp' required>
+    <select class='form-control custom-select mb-1' name='hood' required>
+        <option selected disabled>Neighborhood</option>
+        <option value='N'>North (N)</option>
+        <option value='NW'>Northwest (NW)</option>
+        <option value='NE'>Northeast (NE)</option>
+        <option value='SW'>Southwest (SW)</option>
+        <option value='SE'>Southeast (SE)</option>
+    </select>
+    <input class='form-control mb-1' type='text' name='address' placeholder="Address (leave out city, state, and zip)" required>
+    <label class='ml-2' for='image'>Paste the URL to a pubicly available image. You can right-click on image and select 'copy image address' and then past the URL in the field below.</label>
+    <input id='image' class='form-control mb-1' type='text' name='image' placeholder='Image (paste URL)' required>
+    <textarea class='form-control mb-1 pb-5' type='text' name='description' placeholder='Description' required></textarea>
+    <label class='ml-2' for='question'>Create a question for your stamp. Make it something that someone would have to actually visit the location to know, something a person couldn't just google.</label>
+    <input id='question' class='form-control mb-1' type='text' name='question' placeholder="Question" required>
+    <label class='ml-2' for='answer'>Other people will have to type your answer exactly right, so please try to make it a single word or number.</label>
+    <input id='answer' class='form-control mb-1' type='text' name='answer' placeholder='Answer' required>
+    <div class='text-center'>
+        <button class='btn btn-outline-primary'>Submit</button>
+    </div>
+</form>
+
+<div class='container text-center'>
+    <p>Having trouble creating a stamp? Click <a href='/troubleshooting'>here</a> for help.</p>
+</div>
+
+<% include ../partials/footer %> 

@@ -1,0 +1,107 @@
+<% include partials/header %>
+
+<div class='text-center'>
+    <h4>Troubleshooting</h4>
+</div>
+
+<div class='container'>
+    <p class='lead ml-2'>Adding a stamp</p>
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              How do I upload an image?
+            </button>
+          </h5>
+        </div>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            We do not host images on our site, and therefore you cannot upload an image. Rather, you will paste the URL of a publicly available image. You can right-click on the desired image, select 'copy image address', and then paste this URL into the 'image' field of the add a stamp page. Please make sure the image you submit does not have any use restrictions (such as copyright).
+          </div>
+        </div>
+      </div>
+      <div class="card mb-2">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              I submitted my stamp - why can't I see it?
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            All stamps must be approved by the webmaster before they are added to the site and available to be added to your passport.
+          </div>
+        </div>
+      </div>
+    
+      <p class='lead ml-2'>My passport</p>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              What are the levels, and how do I advance?
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="card-body">
+            Levels are simply a reflection of how many neighborhoods you have completed. The levels are as follows:
+            <ul>
+                <li>Tourist (i.e., no neighborhoods completed)</li>
+                <li>Hipster Apprentice</li>
+                <li>Hipster</li>
+                <li>Junior Diplomat</li>
+                <li>Diplomat</li>
+                <li>Ambassador</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingFour">
+          <h5 class="mb-0">
+            <button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              Why don't I see any stamps on My Passport?
+            </button>
+          </h5>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+          <div class="card-body">
+            Make sure you have a neighborhood selected first, and then click 'See Neighborhood Stamps'. 
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingFive">
+          <h5 class="mb-0">
+            <button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              I'm sure that I'm entering the right answer to the stamp question, but the stamp is not being added to my passport as completed. What gives?
+            </button>
+          </h5>
+        </div>
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+          <div class="card-body">
+            The answer must be correct, letter for letter (although it is not case-sensitive. Having said that, the purpose of this site is to encourage you to explore, not to trick you. If you visited a location and are still having trouble completing a stamp, email administration at passportlandia@gmail.com and a stamp can be manually added if necessary.)
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingSix">
+          <h5 class="mb-0">
+            <button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+              There's an awful lot of reading from plaques. Why isn't this scavenger hunt more challenging?
+            </button>
+          </h5>
+        </div>
+        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+          <div class="card-body">
+            The main purpose of Passportlandia is to encourage you to get out and explore the city. We are more interested in your ability to create meaningful experiences than how many puzzles you can solve. Please take your time collecting stamps, bring a friend, and make some memories.
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<% include partials/footer %>

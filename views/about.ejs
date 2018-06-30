@@ -1,0 +1,67 @@
+<% include partials/header %>
+
+<div class='container'>
+    <div class="card border-dark mb-3 mx-auto">
+      <div class="card-header text-center text-white about-card-header"> 
+          <h5 class="card-title">What is Passportlandia?</h5>
+      </div>
+      <div class="card-body text-dark">
+        <p class="card-text">Explore Portland and collect all of the stamps for each of the five neighborhoods to complete your Passport.</p>
+      </div>
+    </div>
+</div>
+
+<div class='container'>
+    <div class="card border-dark mb-3 mx-auto">
+      <div class="card-header text-center text-white about-card-header"> 
+          <h5 class="card-title">How do I get a Passport?</h5>
+      </div>
+      <div class="card-body text-dark">
+          <p class="card-text"><a href='/signup'>Sign up</a> to get a free passport and then visit <% if (currentUser) { %>
+              <a href="/users/<%= currentUser._id %>">My Passport</a> 
+              <% } else { %>
+              My Passport 
+              <% } %>
+              to see all the stamps you will need to complete. Your passport will update whenever you complete a stamp.</p>
+      </div>
+    </div>
+</div>
+
+<div class='container'>
+    <div class="card border-dark mb-3 mx-auto">
+      <div class="card-header text-center text-white about-card-header"> 
+          <h5 class="card-title">How do I complete a stamp?</h5>
+      </div>
+      <div class="card-body text-dark">
+          <p class="card-text">Click on a stamp displayed in 
+              <% if (currentUser) { %>
+              <a href="/users/<%= currentUser._id %>">My Passport</a> 
+              <% } else { %>
+              My Passport 
+              <% } %> 
+              or visit the <a href='/stamps'>index page</a> to see more information about a stamp location.</p>
+          <p>Each location has a question that must be answered in order to complete the stamp. For example, a question may be, "How many steps are on the entry staircase?" Once you have visited the location in real life, go to the stamp page again and submit the answer to have the stamp added to your passport as completed.</p>
+          <p>If you have any trouble completing a stamp, click <a href='/troubleshooting'>here</a>.</p>
+      </div>
+    </div>
+</div>
+
+<div class='container'>
+    <div class="card border-dark mb-3 mx-auto">
+      <div class="card-header text-center text-white about-card-header"> 
+          <h5 class="card-title">How do I complete a neighborhood?</h5>
+      </div>
+      <div class="card-body text-dark">
+        <p class="card-text">Each neighborhood has 8 required stamps. In addition, you must complete 2 optional stamps. A stamp's profile page will indicate whether it is required or optional. Once you have completed all the stamps for a neighborhood, it will show up as completed on your passport. And once you have completed all five neighborhoods, you will have completed your passport.</p>
+          <p>Optional stamps have been created by users. You can create your own optional stamp by clicking 
+              <% if (currentUser) { %>
+              <a href='/stamps/new'>here</a>.
+              <% } else { %>
+              Add Stamp (you must be logged in to see this link).
+              <% } %>
+              A stamp must be approved by the webmaster before it is added to the site. Click <a href="mailto:passportlandia@gmail.com?Subject=Stamp%20Approval%20Request" >here</a> to expedite the approval process once you have submitted a stamp to be added. You do not have to add any optional stamps in order to complete your passport, but it adds to the fun!</p>
+      </div>
+    </div>
+</div>
+
+<% include partials/footer %>

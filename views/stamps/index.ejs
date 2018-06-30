@@ -1,0 +1,77 @@
+<% include ../partials/header %> 
+
+<h1 class="lead text-center">Stamps</h1>
+ 
+<form class='form-group text-center' action='/stamps' method='GET'>
+    <div class='container'>
+        <div class='container'>
+        <div class='row'>
+            <select id='hoodSelector' class='custom-select col-6 col-lg-4 offset-lg-2' name='hood'>
+                <option <% if (!selectedHood) { %>
+                            selected
+                        <% } %>
+                        disabled>Neighborhood</option>
+                <option <% if (selectedHood === "N") { %>
+                            selected 
+                        <% } %>
+                        value='N'>North</option>
+                <option <% if (selectedHood === "NW") { %>
+                            selected 
+                        <% } %>
+                        value='NW'>Northwest</option>
+                <option <% if (selectedHood === "NE") { %>
+                            selected 
+                        <% } %>
+                        value='NE'>Northeast</option>
+                <option <% if (selectedHood === "SW") { %>
+                            selected 
+                        <% } %>
+                        value='SW'>Southwest</option>
+                <option <% if (selectedHood === "SE") { %>
+                            selected 
+                        <% } %>
+                        value='SE'>Southeast</option>
+            </select>
+            <select id='reqSelector' class='custom-select col-6 col-lg-4' name='stampRequired'>
+                <option selected disabled>Required</option>
+                <option value='true'>Yes</option>
+                <option value='false'>No</option>
+            </select>
+        </div>
+        </div>
+        <div class='container'>
+        <div class='row'>
+            <i id='indexPageDown' class="fas fa-angle-left fa-3x ml-auto"></i>
+            <input id='indexPageNumber' class='form-control col-4 mx-auto' type='text' name='stampsPage' placeholder="Page" value='<%= pageIndex %>' required>
+            <i id='indexPageUp' class="fas fa-angle-right fa-3x mr-auto"></i>
+        </div>
+        </div>
+    </div>
+    <button class='btn btn-outline-primary mt-3'>Apply Filter</button>
+</form>
+
+<p class="lead text-center">Click on an image for more info</p>
+
+<!-- Show thumbnail of stamp and name of stamp -->
+<div class='container'>
+    <div class='row'>
+        <% stamps.forEach((stamp) => { %>
+            <div class='col-12 col-md-6 col-lg-4'>
+                <a href='/stamps/<%= stamp._id %>'>
+                    <img class='img-thumbnail index-img' src='<%= stamp.image %>' alt='<%= stamp.name %>'>
+                </a>
+                <div class='caption text-center'>
+                    <p><%= stamp.name %></p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<div class='text-center'>
+    <a class='btn btn-outline-primary' href='/stamps/new'>Add a new stamp</a>
+</div>
+
+
+<script src='index.js'></script>
+<% include ../partials/footer %> 

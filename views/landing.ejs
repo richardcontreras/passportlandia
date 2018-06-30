@@ -1,0 +1,46 @@
+<% include partials/header %>
+
+<!-- Explanation marquee -->
+<div class="content-slider">
+  <div class="slider">
+      <ul>
+        <li class="anim1">
+          <div class="quote">Explore your city</div>
+        </li>
+        <li class="anim2">
+          <div class="quote">Solve puzzles to collect passport stamps</div>
+        </li>
+        <li class="anim3">
+          <div class="quote">Get all stamps for a chance to win prizes</div>
+        </li>
+      </ul>
+  </div>
+</div>
+<!-- End of explanation marquee -->
+
+<div class='text-center container'>
+    <a href='/stamps'><img src='https://images.unsplash.com/photo-1436505743955-a98c0d3eb1a8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=82154e5d4efa09f5f145f640c8d56f2d&auto=format&fit=crop&w=500&q=60' alt='White Stag Sign, Portland Oregon' class='img-thumbnail' id='portlandLandingImg'></a>
+    <div class='caption'>
+        <a href='/stamps' class='btn btn-success btn'>Portland, OR</a>
+    </div>
+    <a href='/about' class='btn btn-primary btn mb-3'>Learn more</a>
+    <p class='small'>It is currently <%= temp %> &#176F in Portland and the weather is <%= weatherDescription %>.
+    <% if (weatherDescription === 'thunderstorm') { %>
+        <span>(Find your thunder buddy!)</span>
+        <% } else if (weatherDescription === 'light rain') { %>
+        <span>(You're not going to let some light rain stop you from exploring, are you?)</span>
+        <% } else if (weatherDescription === 'moderate rain') { %>
+        <span>Bring your hoodie (or your umbrella if you moved here from California...)</span>
+        <% } else if (weatherDescription === 'freezing rain') { %>
+        <span>(Freezing rain is no joke. Only drive if you absolutely have to.)</span>
+        <% } else if (weatherDescription === 'broken clouds') { %>
+        <span>(Anyone got any duct tape?)</span>
+        <% } else if (weatherDescription === ('clear sky' || 'few clouds')) { %>
+        <span>(You made it through nine months of rain. You've earned today!)</span>
+        <% } else if (weatherDescription === 'overcast clouds') { %>
+        <span>(Yep. Again.)</span>
+      <% }; %>
+    The sun will set at <%= sunsetTime %>.</p>
+</div>
+
+<% include partials/footer %>
